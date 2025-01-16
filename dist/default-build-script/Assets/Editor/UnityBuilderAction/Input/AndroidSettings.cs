@@ -75,16 +75,17 @@ namespace UnityBuilderAction.Input
       if (options.TryGetValue("androidSymbolType", out symbolType) && !string.IsNullOrEmpty(symbolType))
       {
 #if UNITY_2021_1_OR_NEWER
+        // TODO: It seems like as of writing this comment, the unity's documentation for EditorUserBuildSettings and its replacement are out of date or not updated or just wrong! Since we don't have android builds, we can wait until the game.ci community figures it.
         switch (symbolType)
         {
           case "public":
-            EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Public;
+            // EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Public;
             break;
           case "debugging":
-            EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Debugging;
+            // EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Debugging;
             break;
           case "none":
-            EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Disabled;
+            // EditorUserBuildSettings.androidCreateSymbols = AndroidCreateSymbols.Disabled;
             break;
         }
 #elif UNITY_2019_2_OR_NEWER
@@ -92,10 +93,10 @@ namespace UnityBuilderAction.Input
         {
           case "public":
           case "debugging":
-            EditorUserBuildSettings.androidCreateSymbolsZip = true;
+            // EditorUserBuildSettings.androidCreateSymbolsZip = true;
             break;
           case "none":
-            EditorUserBuildSettings.androidCreateSymbolsZip = false;
+            // EditorUserBuildSettings.androidCreateSymbolsZip = false;
             break;
         }
 #endif
