@@ -75,6 +75,7 @@ class Docker {
             --volume "${actionFolder}/BlankProject":"/BlankProject:z" \
             --cpus=${dockerCpuLimit} \
             --memory=${dockerMemoryLimit} \
+            --oom-kill-disable \
             ${sshAgent ? `--volume ${sshAgent}:/ssh-agent` : ''} \
             ${
               sshAgent && !sshPublicKeysDirectoryPath
