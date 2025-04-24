@@ -15,6 +15,9 @@ namespace UnityBuilderAction
   {
     public static void BuildProject()
     {
+      Debug.Log("Reseting Script Meta Files before building...");
+      UnityUtil.HardResetScriptMetaFiles();
+      Debug.Log("Script Meta Files reset done, building...");
       // Gather values from args
       var options = ArgumentsParser.GetValidatedOptions();
 
