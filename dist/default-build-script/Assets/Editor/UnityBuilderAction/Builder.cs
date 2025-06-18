@@ -18,6 +18,11 @@ namespace UnityBuilderAction
       Debug.Log("Reseting Script Meta Files before building...");
       UnityUtil.HardResetScriptMetaFiles();
       Debug.Log("Script Meta Files reset done, building...");
+
+      DionicJobModule dionicJobModule = new DionicJobModule();
+      ValidationModule validationModule = new ValidationModule(dionicJobModule);
+      validationModule.ValidateAssets(true);
+      
       // Gather values from args
       var options = ArgumentsParser.GetValidatedOptions();
 
