@@ -1,7 +1,9 @@
 {
     "name": "UnityBuilderAction",
     "references": [
-        "Dionic.Core"
+        "Dionic.Core",
+        "Dionic.Game.Validation",
+        "Dionic.Game.DionicJob",
     ],
     "includePlatforms": [
         "Editor"
