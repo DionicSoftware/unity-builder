@@ -3,7 +3,7 @@
     "references": [
         "Dionic.Core",
         "Dionic.Game.Validation",
-        "Dionic.Game.DionicJob",
+        "Dionic.Game.DionicJob"
     ],
     "includePlatforms": [
         "Editor"
