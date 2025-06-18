@@ -13,15 +13,37 @@ namespace UnityBuilderAction
 {
   static class Builder
   {
+
+    private static bool requestShutdown; 
+    private static void LogMessageReceivedThreaded(string message, string stacktrace, LogType logType) {
+        if (!(logType == LogType.Error || logType == LogType.Exception || logType == LogType.Assert)) { return; }
+
+        // ingore some Unity errors that pop up with -nographics command line option
+        if (message.StartsWith("Video shaders not found.")) { return; }
+        if (message.Contains("has an unsupported or invalid shader. Texture will not be rendered.")) { return; }
+
+            
+        requestShutdown = true;
+    }
+
+    
     public static void BuildProject()
     {
       Debug.Log("Reseting Script Meta Files before building...");
       UnityUtil.HardResetScriptMetaFiles();
       Debug.Log("Script Meta Files reset done, building...");
 
+      requestShutdown = false;
+      Application.logMessageReceivedThreaded += LogMessageReceivedThreaded;
+
       DionicJobModule dionicJobModule = new DionicJobModule();
       ValidationModule validationModule = new ValidationModule(dionicJobModule);
       validationModule.ValidateAssets(true);
+
+      Application.logMessageReceivedThreaded -= LogMessageReceivedThreaded;
+      if (requestShutdown) {
+          UnityEditor.EditorApplication.Exit(1);
+      }
       
       // Gather values from args
       var options = ArgumentsParser.GetValidatedOptions();
