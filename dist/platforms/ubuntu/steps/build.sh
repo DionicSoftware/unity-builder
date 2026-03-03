@@ -22,7 +22,7 @@ echo "Using build target \"$BUILD_TARGET\"."
 #
 # Display build path and file
 #
-
+BUILD_PATH="build/$BUILD_NAME"
 echo "Using build path \"$BUILD_PATH\" to save file \"$BUILD_FILE\"."
 BUILD_PATH_FULL="$GITHUB_WORKSPACE/$BUILD_PATH"
 CUSTOM_BUILD_PATH="$BUILD_PATH_FULL/$BUILD_FILE"
