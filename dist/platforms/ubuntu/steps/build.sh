@@ -159,6 +159,8 @@ fi
 # Results
 #
 
+cat "$UNITY_PROJECT_PATH/Assets/Scripts/3_HavenCore/WorldObjectLink/WorldObjectLinkModule.cs"
+
 echo ""
 echo "###########################"
 echo "#       Build output      #"
